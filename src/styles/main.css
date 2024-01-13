@@ -1,0 +1,28 @@
+body {
+    font-family: 'Bruno Ace SC', cursive;
+    display: flex;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: crimson;
+}
+
+button {
+    font-family: 'Bruno Ace SC', cursive;
+    color: #ff3d02;
+    cursor: pointer;
+}
+
+h2 {
+    width: 100%;
+    margin-bottom: 3px;
+    font-size: 25px;
+    font-weight: 600;
+    border-bottom: solid 3px #b21939;;
+}
+
+li {
+    margin-bottom: 3px;
+    font-size: 22px;
+    font-weight: 300;
+}

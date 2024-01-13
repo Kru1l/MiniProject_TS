@@ -1,14 +1,3 @@
-//     На сторінці post-details.html:
-// 7 Вивести всю, без виключення, інформацію про об'єкт post на який клікнули .
-// 8 Нижче інформації про пост, вивести всі коментарі поточного поста (ендпоінт  - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
-//
-// Стилизація проєкта -
-// index.html - всі блоки з user - по 2 в рядок. кнопки/посилиння розташувати під інформацією про user.
-//     user-details.html - блок з інфою про user зверху сторінки. Кнопка нижчє, на 90% ширини сторінки, по центру.
-//     блоки з короткою іфною про post - в ряд по 5 .
-//     post-details.html - блок з інфою про пост зверху. Коментарі - по 4 в ряд.
-//     Всі елементи котрі характеризують users, posts, comments візуалізувати, так, щоб було видно що це блоки (дати фон. марджини і тд)
-
 const curLoc: URL = new URL(location.href);
 const post: string = curLoc.searchParams.get('post');
 const parsePost = JSON.parse(post);
@@ -43,23 +32,30 @@ commsDiv.appendChild(h2Comms);
 fetch(`${comPosts}${id}/comments`)
     .then(value => value.json())
     .then(comments => comments.forEach(comment => {
-        const {id, name, email, body} = comment;
+        const {postId, id, name, email, body} = comment;
         const div: HTMLDivElement = document.createElement('div');
         div.classList.add('comm');
 
+        const pPostId: HTMLParagraphElement = document.createElement('p');
+        pPostId.innerText = `PostID: ${postId}`;
+
         const pId: HTMLParagraphElement = document.createElement('p');
-        pId.innerText = id;
+        pId.innerText = `ID: ${id}`;
 
         const pName: HTMLParagraphElement = document.createElement('p');
-        pName.innerText = name;
+        pName.innerText = `Name: ${name}`;
 
         const pEmail: HTMLParagraphElement = document.createElement('p');
-        pEmail.innerText = email;
+        pEmail.innerText = `Email: ${email}`;
 
         const pBody: HTMLParagraphElement = document.createElement('p');
-        pBody.innerText = body;
+        pBody.innerText = `Body: ${body}`;
 
-        div.append(pId, pName, pEmail, pBody);
+        div.append(pPostId, pId, pName, pEmail, pBody);
         commsDiv.appendChild(div);
     }))
-    .catch(reason => console.error());
+    .then((): void => {
+        const childDiv: Element = commsDiv.children[5];
+        childDiv.classList.add('lastChild');
+    })
+    .catch(reason => console.error(reason));

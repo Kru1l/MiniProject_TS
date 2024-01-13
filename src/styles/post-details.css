@@ -1,0 +1,59 @@
+html {
+    background: #020223;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    background: #020223;
+}
+
+.postInfo {
+    width: 90%;
+}
+
+#h2Comms {
+    text-align: center;
+}
+
+.comments {
+    width: 90%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+
+.comm {
+    width: 20vw;
+    height: 60vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    overflow: hidden;
+
+    background: cornsilk;
+    border-radius: 10px;
+    margin: 3% 0 2%;
+    padding: 1% 0;
+}
+
+.comm > p {
+    width: 85%;
+    flex-flow: wrap;
+    text-align: justify;
+    margin: 1.5% 0;
+}
+
+.lastChild {
+    position: absolute;
+    top: 145%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
