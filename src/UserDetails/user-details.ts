@@ -7,23 +7,30 @@ const infoDiv: Element = document.body.getElementsByClassName('info')[0];
 const h2Ud: HTMLHeadingElement = document.createElement('h2');
 h2Ud.innerText = 'User Details';
 
-const list: HTMLUListElement = document.createElement('ul');
-list.classList.add('list');
-infoDiv.append(h2Ud, list);
+infoDiv.append(h2Ud);
+
+const iterObj = (obj: object): HTMLUListElement => {
+    const list: HTMLUListElement = document.createElement('ul');
+    list.classList.add('list');
+
+    for (const key in obj) {
+        const li: HTMLLIElement = document.createElement('li');
+        li.textContent = key + ':';
+
+        if (typeof obj[key] === 'object') {
+            li.appendChild(iterObj(obj[key]));
+        } else {
+            li.textContent = `${key}: ${obj[key]}`;
+        }
+        list.appendChild(li);
+    }
+    return list;
+}
+
 fetch(BaseURL + iD)
     .then(value => value.json())
-    .then(user => {
-        const tidyUser: string[] = JSON.stringify(user)
-            .replace(/[{}"]/g, '')
-            .replace(/:/g, ': ')
-            .split(',');
-
-        for (const item of tidyUser) {
-            const li: HTMLLIElement = document.createElement('li');
-            li.innerText = item.charAt(0).toUpperCase() + item.slice(1) + ';';
-            list.appendChild(li);
-        }
-    })
+    .then(user => infoDiv.appendChild(iterObj(user)))
+    .catch(reason => console.error(reason));
 
 const divForBtn: HTMLDivElement = document.createElement('div');
 divForBtn.classList.add('divForBtn');

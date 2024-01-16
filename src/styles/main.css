@@ -2,6 +2,7 @@ body {
     font-family: 'Bruno Ace SC', cursive;
     display: flex;
     box-sizing: border-box;
+    background: url("./images/back1.jpg") 0 0/100% fixed;
     margin: 0;
     padding: 0;
     color: crimson;
@@ -15,14 +16,24 @@ button {
 
 h2 {
     width: 100%;
+    background: rgba(2, 2, 35, 0.7);
+    border-bottom: solid 3px #b21939;
+    border-radius: 20px;
     margin-bottom: 3px;
+    padding-left: 4px;
     font-size: 25px;
     font-weight: 600;
-    border-bottom: solid 3px #b21939;;
+}
+
+ul {
+    background: rgba(2, 2, 35, 0.6);
+    border-radius: 20px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
 li {
-    margin-bottom: 3px;
-    font-size: 22px;
+    margin-bottom: 2px;
+    font-size: 21px;
     font-weight: 300;
 }

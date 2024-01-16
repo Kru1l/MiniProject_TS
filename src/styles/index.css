@@ -6,7 +6,6 @@ main {
     box-sizing: border-box;
     justify-content: space-around;
     align-items: flex-start;
-    background: cornsilk;
 }
 
 #users {
@@ -27,7 +26,7 @@ main {
     box-sizing: border-box;
     font-size: 23px;
 
-    background: #020223;
+    background: rgba(2, 2, 35, 0.9);
     border-radius: 20px;
     margin: 3% 0;
 }
